@@ -21,10 +21,8 @@ console.log('Front-end JavaScript is working!');
 
 // Initialize Slick carousel
     $('.ss-wrapper').slick({
-      autoplay: true, // Enable autoplay
-      autoplaySpeed: 3000, // Autoplay interval in milliseconds
       dots: true, // Show navigation dots
       arrows: true, // Show navigation arrows
-      slidesToShow: 1, // Number of slides to show at a time
-      slidesToScroll: 1, // Number of slides to scroll at a time
+      slidesToShow: 2, // Number of slides to show at a time
+      slidesToScroll: 2, // Number of slides to scroll at a time
     });
