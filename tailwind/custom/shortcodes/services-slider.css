@@ -1,0 +1,19 @@
+
+/* Overide slick slider styles */
+@font-face {
+    font-family: 'slick';
+    font-weight: normal;
+    font-style: normal;
+    src: url('js/slick-EVLS6IWX.eot');
+    src: url('js/slick-EVLS6IWX.eot') format('embedded-opentype'), url('js/slick-MU5EZO5G.woff') format('woff'), url('js/slick-NKQ64RRA.ttf') format('truetype'), url('js/slick-7CK47X3J.svg#slick') format('svg');
+}
+.slick-loading .slick-list
+{
+    background: #fff url('js/ajax-loader-BOAPMZMT.gif') center center no-repeat;
+}
+/* End Overide slick slider styles */
+
+
+ body{
+    /* display: none; */
+ }

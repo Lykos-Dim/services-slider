@@ -35,3 +35,12 @@
  */
 @import "tailwindcss/utilities";
 @import "./custom/utilities.css";
+
+/* Plugins build */
+
+@import "../theme/js/script";
+
+
+/* Services Slider shortcode Css */
+
+@import "./custom/shortcodes/services-slider.css";

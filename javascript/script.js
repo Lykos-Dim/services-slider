@@ -1,3 +1,9 @@
+import $ from 'jquery';
+
+import 'slick-carousel';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 /**
  * Front-end JavaScript
  *
@@ -8,3 +14,17 @@
  * For esbuild documentation, please see:
  * https://esbuild.github.io/
  */
+
+
+console.log('Front-end JavaScript is working!');
+
+
+// Initialize Slick carousel
+    $('.ss-wrapper').slick({
+      autoplay: true, // Enable autoplay
+      autoplaySpeed: 3000, // Autoplay interval in milliseconds
+      dots: true, // Show navigation dots
+      arrows: true, // Show navigation arrows
+      slidesToShow: 1, // Number of slides to show at a time
+      slidesToScroll: 1, // Number of slides to scroll at a time
+    });
