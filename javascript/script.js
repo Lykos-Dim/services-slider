@@ -1,9 +1,3 @@
-import $ from 'jquery';
-
-import 'slick-carousel';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
 /**
  * Front-end JavaScript
  *
@@ -15,14 +9,26 @@ import 'slick-carousel/slick/slick-theme.css';
  * https://esbuild.github.io/
  */
 
+import $ from 'jquery';
+import 'slick-carousel';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+// Import FontAwesome styles
+
+
+
 
 console.log('Front-end JavaScript is working!');
 
 
 // Initialize Slick carousel
-    $('.ss-wrapper').slick({
-      dots: true, // Show navigation dots
-      arrows: true, // Show navigation arrows
-      slidesToShow: 2, // Number of slides to show at a time
-      slidesToScroll: 2, // Number of slides to scroll at a time
-    });
+$(document).ready(function() {
+  $('.js-servises-slider').slick({
+    arrows: true,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    prevArrow: $('.js-servises-slider__arrows .js-arrow-prev'),
+    nextArrow: $('.js-servises-slider__arrows .js-arrow-next')
+  });
+});
+

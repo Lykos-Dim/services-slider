@@ -32,10 +32,19 @@ if (!function_exists('services_slider_sc')) {
 
 		if ($aff_query->have_posts()) {
 
-			$css_class_output = 'ss-wrapper';
+			$css_class_output = 'services-slider--wrapper';
 
 			ob_start();
-			echo '<div class="' . esc_attr($css_class_output) . '">';
+			echo '<section class="' . esc_attr($css_class_output) . '">';
+			echo '	<div class="services-slider__container">';
+			echo '		<div class="services-slider__top">';
+			echo '	 		<div class="services-slider--title">';
+			echo '	 			<h3>the rooms</h3>';
+			echo '	 			<h2>Explore our contemporary rooms</h2>';
+			echo '			</div>';
+			echo '			<div class="services-slider--arrows js-servises-slider__arrows"><button class="arrow arrow--prev js-arrow-prev"><i class="fa fa-arrow-left"></i></button><button class="arrow js-arrow-next"><i class="fa fa-arrow-right"></i></button></div>';
+			echo '		</div>';
+			echo '	<div class="js-servises-slider">';
 
 			while ($aff_query->have_posts()) {
 				$aff_query->the_post();
@@ -48,7 +57,8 @@ if (!function_exists('services_slider_sc')) {
 
 			}
 
-			echo '</div>';
+			echo '	</div>';
+			echo '</section>';
 			$html = ob_get_clean();
 
 		}

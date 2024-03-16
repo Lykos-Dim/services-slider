@@ -15,7 +15,7 @@ if ( ! defined( 'SERVICES_SLIDER_VERSION' ) ) {
 	 * to create your production build, the value below will be replaced in the
 	 * generated zip file with a timestamp, converted to base 36.
 	 */
-	define( 'SERVICES_SLIDER_VERSION', '0.1.0' );
+	define( 'SERVICES_SLIDER_VERSION', time() );
 }
 
 if ( ! defined( 'SERVICES_SLIDER_TYPOGRAPHY_CLASSES' ) ) {
@@ -145,12 +145,26 @@ add_action( 'widgets_init', 'services_slider_widgets_init' );
  * Enqueue scripts and styles.
  */
 function services_slider_scripts() {
-	wp_enqueue_style( 'services-slider-style', get_stylesheet_uri(), array(), SERVICES_SLIDER_VERSION );
-	wp_enqueue_script( 'services-slider-script', get_template_directory_uri() . '/js/script.min.js', array(), SERVICES_SLIDER_VERSION, true );
+
+
+	wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/fonts/fontawesome/css/all.css', array(), SERVICES_SLIDER_VERSION, 'all' );
+
+	wp_enqueue_style( 'services-slider-style', get_stylesheet_uri(), array('fontawesome'), SERVICES_SLIDER_VERSION );
+
+
+    // Enqueue the slick.js file, with a dependency on jQuery
+    wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/assets/plugins/slick/slick.js', array('jquery'), SERVICES_SLIDER_VERSION, true );
+
+    // Enqueue the main theme script, with a dependency on the slick.js file
+    wp_enqueue_script( 'services-slider-script', get_template_directory_uri() . '/js/script.min.js', array('jquery', 'slick-js'), SERVICES_SLIDER_VERSION, true );
+
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+
 }
 add_action( 'wp_enqueue_scripts', 'services_slider_scripts' );
 
@@ -191,7 +205,7 @@ function services_slider_enqueue_typography_script() {
 		wp_add_inline_script( 'services-slider-typography', "tailwindTypographyClasses = '" . esc_attr( SERVICES_SLIDER_TYPOGRAPHY_CLASSES ) . "'.split(' ');", 'before' );
 	}
 }
-add_action( 'enqueue_block_assets', 'services_slider_enqueue_typography_script' );
+//add_action( 'enqueue_block_assets', 'services_slider_enqueue_typography_script' );
 
 /**
  * Add the Tailwind Typography classes to TinyMCE.
