@@ -22,13 +22,30 @@ console.log('Front-end JavaScript is working!');
 
 
 // Initialize Slick carousel
-$(document).ready(function() {
+$(document).ready(function () {
   $('.js-servises-slider').slick({
     arrows: true,
-    slidesToShow: 2,
-    slidesToScroll: 2,
-    prevArrow: $('.js-servises-slider__arrows .js-arrow-prev'),
-    nextArrow: $('.js-servises-slider__arrows .js-arrow-next')
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    prevArrow: $('.js-services-slider__arrows .js-arrow-prev'),
+    nextArrow: $('.js-services-slider__arrows .js-arrow-next'),
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 781,
+        settings: {
+            slidesToShow: 3,
+            variableWidth: true,
+        }
+    }
+
+
+    ]
   });
 });
 
