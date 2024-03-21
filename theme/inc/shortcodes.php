@@ -9,6 +9,8 @@ if (!function_exists('services_slider_sc')) {
 	{
 		$default_atts = array(
 			'num'                => '10',
+			'title'                => 'Explore our contemporary rooms',
+			'subtitle'                => 'The Rooms',
 		);
 
 		// Filter default shortcode attributes
@@ -16,6 +18,8 @@ if (!function_exists('services_slider_sc')) {
 		$atts         = shortcode_atts($default_atts, $atts);
 
 		$post_per_page = $atts['num'];
+		$title = $atts['title'];
+		$subtitle = $atts['subtitle'];
 		$html = '';
 
 		// Setup query args
@@ -37,11 +41,17 @@ if (!function_exists('services_slider_sc')) {
 			echo '<section class="' . esc_attr($css_class_output) . '">';
 			echo '    <div class="services-slider__container">';
 			echo '        <div class="services-slider__top">';
-			echo '            <div class="services-slider--title">';
-			echo '                <h3>The Rooms</h3>';
-			echo '                <h2>Explore our contemporary rooms</h2>';
-			echo '            </div>';
-			echo '            <div class="services-slider--arrows js-services-slider__arrows"><button class="arrow arrow--prev js-arrow-prev"><i class="fa fa-arrow-left"></i></button><button class="arrow js-arrow-next"><i class="fa fa-arrow-right"></i></button></div>';
+			if ( !empty( $subtitle ) || !empty( $title ) ) :
+				echo '<div class="services-slider--title">';
+				if ( !empty( $subtitle )  ) :
+					echo '<h3>' . esc_html( $subtitle ) . '</h3>';
+				endif;
+				if ( !empty( $title ) ) :
+				echo '<h2>' . esc_html( $title ) . '</h2>';
+				endif;
+				echo '</div>';
+			endif;
+			echo '            <div class="services-slider--arrows services-slider--arrows__big js-services-slider__arrows"><button class="arrow arrow--prev js-arrow-prev"><i class="fa fa-arrow-left"></i></button><button class="arrow js-arrow-next"><i class="fa fa-arrow-right"></i></button></div>';
 			echo '        </div>';
 			echo '    <div class="js-servises-slider">';
 		
@@ -57,7 +67,7 @@ if (!function_exists('services_slider_sc')) {
 			}
 		
 			echo '    </div>';
-			echo '	<div class="services-slider--arrows js-services-slider__arrows"><button class="arrow arrow--prev js-arrow-prev"><i class="fa fa-arrow-left"></i></button><button class="arrow js-arrow-next"><i class="fa fa-arrow-right"></i></button></div>';
+			echo '	<div class="services-slider--arrows services-slider--arrows__small js-services-slider__arrows"><button class="arrow arrow--prev js-arrow-prev"><i class="fa fa-arrow-left"></i></button><button class="arrow js-arrow-next"><i class="fa fa-arrow-right"></i></button></div>';
 			echo '</section>';
 			$html = ob_get_clean();
 		

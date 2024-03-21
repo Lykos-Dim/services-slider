@@ -219,6 +219,28 @@ function services_slider_tinymce_add_class( $settings ) {
 }
 add_filter( 'tiny_mce_before_init', 'services_slider_tinymce_add_class' );
 
+
+// Add character limit filter to the_excerpt hook
+add_filter('the_excerpt', 'limit_excerpt_characters');
+
+function limit_excerpt_characters($excerpt) {
+    // Define your character limit and appendage
+    $limit = 89;
+    $append = '...';
+
+    // Trim the string to the maximum length
+    $excerpt = substr($excerpt, 0, $limit);
+
+    // Add ellipsis if the original string is longer than the limit
+    if (strlen($excerpt) >= $limit) {
+        $excerpt = rtrim($excerpt, ' .,!;:-');
+        $excerpt .= $append;
+    }
+
+    return $excerpt;
+}
+
+
 /**
  * Custom template tags for this theme.
  */
